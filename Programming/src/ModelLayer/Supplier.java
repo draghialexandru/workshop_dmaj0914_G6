@@ -3,32 +3,32 @@ package ModelLayer;
 /**
 *
 * @author Draghi Alexandru
-* @version 16.03.2015
+* @version 18.03.2015
 */
 
-public class Customer {
+public class Supplier {
 
 	//instance variables 
 	private String id;
 	private String name;
 	private String address;
-	private String zipCode;
-	private String city;
+	private String country;
 	private String phoneno;
-public Customer() {
+	private String email;
+public Supplier() {
         
     }
-    public Customer(String id){
+    public Supplier(String id){
         this.id = id;
     }
-    public Customer (String id,String name, String address, String zipCode, String city, String phoneno)
+    public Supplier (String id,String name, String address, String country, String phoneno, String email)
     {
     	this.id = id;
         this.name = name;
         this.address = address;
-        this.zipCode = zipCode;
-        this.city = city;
+        this.country = country;
         this.phoneno = phoneno;
+        this.email = email;
     }
     //set methods
     public void setID(String id)
@@ -43,14 +43,18 @@ public Customer() {
     {
         this.address = address;
     }
-    public void setZipcode (String zipCode){
-        this.zipCode = zipCode;
+    public void setcountry (String country)
+    {
+        this.country = country;
     }
-    public void setCity (String city){
-        this.city = city;
-    }
-    public void setPhoneno (String phoneno){
+    
+    public void setPhoneno (String phoneno)
+    {
         this.phoneno = phoneno;
+    }
+    public void setemail (String email)
+    {
+        this.email = email;
     }
     
     //get method
@@ -66,17 +70,17 @@ public Customer() {
     {
         return address;
     }
-    public String getZipcode()
+    public String getcountry()
     {
-        return zipCode;
+        return country;
     }
-     public String getCity()
-    {
-        return city;
-    }
+
     public String getPhoneno()
     {
         return phoneno;
     }
-    
+    public String getEmail()
+   {
+       return email;
+   }
 }
