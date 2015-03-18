@@ -1,10 +1,6 @@
 package ModelLayer;
 
-/**
-*
-* @author Draghi Alexandru
-* @version 18.03.2015
-*/
+
 
 public class Product {
 
@@ -15,13 +11,7 @@ public class Product {
 	private double rentPrice;
 	private String countryOfOrigin;
 	private int minStock;
-	private String size;
-	private String colour;
-	private String type;
-	private String description;
-	private String fabric;
-	private String calibre;
-	
+	private String productType;
 	
 public Product() {
         
@@ -30,7 +20,7 @@ public Product() {
         this.name = name;
     }
     public Product (String name, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin, int minStock,
-    		String size,String colour, String type, String description, String fabric, String calibre)
+    		String productType)
     {
         this.name = name;
         this.purchasePrice = purchasePrice;
@@ -38,12 +28,7 @@ public Product() {
         this.rentPrice = rentPrice;
         this.countryOfOrigin = countryOfOrigin;
         this.minStock = minStock;
-        this.size = size;
-        this.colour = colour;
-        this.type = type;
-        this.description = description;
-        this.fabric = fabric;
-        this.calibre = calibre;
+        this.productType = productType;
         
     }
     //set methods
@@ -72,30 +57,6 @@ public Product() {
     {
     	this.minStock = minStock;
     }
-    public void setSize(String size)
-    {
-    	this.size = size;
-    }
-    public void setColour(String colour)
-    {
-    	this.colour = colour;
-    }
-    public void setType(String type)
-    {
-    	this.type = type;
-    }
-    public void setDescription(String description)
-    {
-    	this.description = description;
-    }
-    public void setFabric(String fabric)
-    {
-    	this.fabric = fabric;
-    }
-    public void setCalibre(String calibre)
-    {
-    	this.calibre = calibre;
-    }
     
     //get method
     public String getName()
@@ -123,30 +84,4 @@ public Product() {
     {
     	return minStock;
     }
-    public String getSize()
-    {
-    	return size;
-    }
-    public String getColour()
-    {
-    	return colour;
-    }
-    public String getType()
-    {
-    	return type;
-    }
-    public String getDescription()
-    {
-    	return description;
-    }
-    public String getFabric()
-    {
-    	return fabric;
-    }
-    public String getCalibre()
-    {
-    	return calibre;
-    }
-    
-    
 }

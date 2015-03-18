@@ -9,6 +9,8 @@ package ModelLayer;
 public class ProductsAmount {
 	//instance variables
 	private int amount;
+	private SalesOrder salesorder;
+	private Product product;
 	
 	public ProductsAmount() {
 	}
