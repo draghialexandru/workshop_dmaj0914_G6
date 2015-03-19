@@ -31,6 +31,11 @@ public class DBCustomer implements IFDBCus{
     {   String wClause = "  id = '" + Cusid + "'";
         return singleWhere(wClause, retriveAssociation);
     }
+  //get one Customer having the phoneNo
+    public Customer findCustomerPhoneNo(String phoneNo, boolean retriveAssociation)
+    {   String wClause = "  id = '" + phoneNo + "'";
+        return singleWhere(wClause, retriveAssociation);
+    }
     //find one Customer having the Name
     public Customer searchCustomerName(String name, boolean retriveAssociation)
     {
@@ -38,11 +43,11 @@ public class DBCustomer implements IFDBCus{
         System.out.println("SearchCustomer " + name);
         return singleWhere(name, retriveAssociation);
     }
-  //find one employee having the fname
+  //find one customer having the Name
     public Customer searchCustomerID(String attValue, boolean retriveAssociation)
     {
-        String wClause = "ssn = '" + attValue + "'";
-        System.out.println("Search Employee: " + wClause);
+        String wClause = "id = '" + attValue + "'";
+        System.out.println("Search Customer: " + wClause);
         return singleWhere(wClause, retriveAssociation);
     }
      //insert a new Customer
