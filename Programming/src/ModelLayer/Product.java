@@ -5,23 +5,25 @@ package ModelLayer;
 public class Product {
 
 	//instance variables 
+	private String P_id;
 	private String name;
 	private double purchasePrice;
 	private double salesPrice;
 	private double rentPrice;
 	private String countryOfOrigin;
-	private int minStock;
+	private String minStock;
 	private String productType;
 	
 public Product() {
         
     }
-    public Product(String name){
-        this.name = name;
+    public Product(String P_id){
+        this.P_id = P_id;
     }
-    public Product (String name, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin, int minStock,
+    public Product (String P_id, String name, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin, String minStock,
     		String productType)
     {
+    	this.P_id = P_id;
         this.name = name;
         this.purchasePrice = purchasePrice;
         this.salesPrice = salesPrice;
@@ -32,6 +34,10 @@ public Product() {
         
     }
     //set methods
+    public void setP_id(String P_id)
+    {
+    	this.P_id = P_id;
+    }
     public void setName(String name)
     {
         this.name = name;
@@ -53,12 +59,20 @@ public Product() {
     {
         this.countryOfOrigin = countryOfOrigin;
     }
-    public void setMinStock (int minStock)
+    public void setMinStock (String minStock)
     {
     	this.minStock = minStock;
     }
+    public void setProductType(String productType)
+    {
+    	this.productType = productType;
+    }
     
     //get method
+    public String getP_id()
+    {
+    	return P_id;
+    }
     public String getName()
     {
         return name;
@@ -80,8 +94,12 @@ public Product() {
    {
        return countryOfOrigin;
    }
-    public int getMinStock()
+    public String getMinStock()
     {
     	return minStock;
+    }
+    public String getProductType()
+    {
+    	return productType;
     }
 }
