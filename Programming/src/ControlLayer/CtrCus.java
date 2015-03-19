@@ -6,7 +6,7 @@ import DBLayer.*;
 import java.util.ArrayList;
 /**
  * CtrCus.java
- * @author Draghi Alexandru
+ * @author group 6
  * @version 18.03.2015
  */
 public class CtrCus {

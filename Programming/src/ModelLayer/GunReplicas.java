@@ -1,7 +1,7 @@
 package ModelLayer;
 /**
 *
-* @author Draghi Alexandru
+* @author group 6
 * @version 18.03.2015
 */
 

@@ -73,10 +73,64 @@ public class MainGUI extends JFrame{
 		
 		btnAdd = new JButton("Add");
 		btnAdd.setBounds(385, 228, 89, 23);
+		btnAdd.addActionListener(new java.awt.event.ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try
+				{
+					int searchID = Integer.parseInt(textSearch.getText());
+					int amount = Integer.parseInt(textAmount.getText());
+					//control.returnProductByID(searchID, amount);
+					
+				}
+				catch(Exception e)
+				{
+					String searchName = textSearch.getText();
+					try
+					{
+						int amount = Integer.parseInt(textAmount.getText());
+						//control.returnProductByName(searchName, amount);
+					}
+					catch(Exception evt)
+					{
+						System.out.println("bad amount input");
+					}
+				}
+			}
+		});
 		panel.add(btnAdd);
 		
 		btnRemove = new JButton("Remove");
 		btnRemove.setBounds(286, 228, 89, 23);
+		btnRemove.addActionListener(new java.awt.event.ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				try
+				{
+					int searchID = Integer.parseInt(textSearch.getText());
+					int amount = Integer.parseInt(textAmount.getText());
+					//control.removeProductByID(searchID, amount);
+					
+				}
+				catch(Exception e)
+				{
+					String searchName = textSearch.getText();
+					try
+					{
+						int amount = Integer.parseInt(textAmount.getText());
+						//control.removeProductByName(searchName, amount);
+					}
+					catch(Exception evt)
+					{
+						System.out.println("bad amount input");
+					}
+				}
+			}
+		});
 		panel.add(btnRemove);
 		
 		btnMoreOptions = new JButton("More Options");
@@ -90,21 +144,32 @@ public class MainGUI extends JFrame{
 				moreOptions.setLocationRelativeTo(null);
 				moreOptions.setOptions(moreOptions);
 			}
-			
 		});
 		panel.add(btnMoreOptions);
 		
 		btnCheckout = new JButton("Check-out");
 		btnCheckout.setBounds(10, 228, 112, 23);
+		btnCheckout.addActionListener(new java.awt.event.ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				CheckoutGUI checkout = null;
+				checkout = new CheckoutGUI();
+				checkout.setVisible(true);
+				checkout.setLocationRelativeTo(null);
+				checkout.setCheckout(checkout);
+			}
+		});
 		panel.add(btnCheckout);
 	}
 	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		/*
 		mainGUI = new MainGUI();
 		mainGUI.setVisible(true);
 		mainGUI.setLocationRelativeTo(null);
+		*/
 	}
 
 }

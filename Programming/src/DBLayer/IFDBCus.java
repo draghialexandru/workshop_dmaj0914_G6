@@ -4,7 +4,7 @@ import ModelLayer.*;
 import java.util.ArrayList;
 /**
  * Interface to the DBCustomerr
- * @author Draghi Alexandru
+ * @author group 6
  */
 public interface IFDBCus {
     // get all Customers

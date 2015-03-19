@@ -5,7 +5,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 
 /**
- * @Author Draghi Alexandru
+ * @Author group 6 
  * @Version 16.03.2015
  */
 
