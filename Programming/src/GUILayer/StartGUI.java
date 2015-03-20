@@ -10,12 +10,17 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-public class Customer extends JFrame{
+import ControlLayer.CtrCus;
+import ModelLayer.Customer;
+
+public class StartGUI extends JFrame{
 	private JTextField textID;
-	private JTextField textPhone;
 	private JButton btnContinue;
 	private JButton btnMoreoptions;
-	public Customer() {
+	private Customer customer;
+	private JLabel lblError;
+	
+	public StartGUI() {
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 350, 120);
@@ -30,18 +35,13 @@ public class Customer extends JFrame{
 		panel.add(textID);
 		textID.setColumns(10);
 		
-		textPhone = new JTextField();
-		textPhone.setBounds(91, 42, 86, 20);
-		panel.add(textPhone);
-		textPhone.setColumns(10);
-		
 		JLabel lblId = new JLabel("ID");
 		lblId.setBounds(10, 14, 46, 14);
 		panel.add(lblId);
 		
-		JLabel lblPhoneno = new JLabel("PhoneNo");
-		lblPhoneno.setBounds(10, 45, 71, 14);
-		panel.add(lblPhoneno);
+		lblError = new JLabel("");
+		lblError.setBounds(10, 45, 167, 14);
+		panel.add(lblError);
 		
 		btnContinue = new JButton("Continue");
 		btnContinue.setBounds(211, 41, 113, 23);
@@ -49,20 +49,31 @@ public class Customer extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				/*
-				if(textID.getText() == )
+				// 
+
+				if(textID.getText().length() > 0 )
 				{
-					
+					CtrCus control = new CtrCus();
+					customer = control.findByID(textID.getText());
+					String x = customer.getID().substring(0, 4).intern();
+					String y = textID.getText().substring(0, 4).intern();
+					System.out.println(x+y);
+					if(x == y)
+					{
+						MainGUI main = new MainGUI();
+						main.setVisible(true);
+						main.setLocationRelativeTo(null);
+					}
+					else
+					{
+						lblError.setText("wrong id" + customer.getID());
+					}
 				}
 				else
 				{
-					
+					lblError.setText("write customer's id");
 				}
-				*/
-				MainGUI main = new MainGUI();
-					main.setVisible(true);
-					main.setLocationRelativeTo(null);
+				
 			}
 			
 		});
@@ -74,20 +85,9 @@ public class Customer extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				/*
-				if(textID.getText() == )
-				{
-					
-				}
-				else
-				{
-					
-				}
-				*/
 				CRUDgui main = new CRUDgui();
-					main.setVisible(true);
-					main.setLocationRelativeTo(null);
+				main.setVisible(true);
+				main.setLocationRelativeTo(null);
 			}
 			
 		});
@@ -96,8 +96,8 @@ public class Customer extends JFrame{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Customer customer = new Customer();
-		customer.setVisible(true);
-		customer.setLocationRelativeTo(null);
+		StartGUI start = new StartGUI();
+		start.setVisible(true);
+		start.setLocationRelativeTo(null);
 	}
 }

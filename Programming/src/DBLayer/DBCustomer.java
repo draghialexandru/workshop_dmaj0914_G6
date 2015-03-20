@@ -28,12 +28,12 @@ public class DBCustomer implements IFDBCus{
     }
     //get one Customer having the id
     public Customer findCustomer(String Cusid, boolean retriveAssociation)
-    {   String wClause = "  id = '" + Cusid + "'";
+    {   String wClause = "  c_id = '" + Cusid + "'";
         return singleWhere(wClause, retriveAssociation);
     }
   //get one Customer having the phoneNo
     public Customer findCustomerPhoneNo(String phoneNo, boolean retriveAssociation)
-    {   String wClause = "  id = '" + phoneNo + "'";
+    {   String wClause = "  cphone_no = '" + phoneNo + "'";
         return singleWhere(wClause, retriveAssociation);
     }
     //find one Customer having the Name
@@ -46,7 +46,7 @@ public class DBCustomer implements IFDBCus{
   //find one customer having the Name
     public Customer searchCustomerID(String attValue, boolean retriveAssociation)
     {
-        String wClause = "id = '" + attValue + "'";
+        String wClause = "c_id = '" + attValue + "'";
         System.out.println("Search Customer: " + wClause);
         return singleWhere(wClause, retriveAssociation);
     }
@@ -54,13 +54,13 @@ public class DBCustomer implements IFDBCus{
     public int insertCustomer(Customer Cus)
     {  
        int rc = -1;
-	   String query="INSERT INTO Customer(id,name,address,zipCode,city,phoneno)  VALUES('"+
+	   String query="INSERT INTO Customer(c_id,cname,caddress,czip_code,ccity,cphone_no)  VALUES('"+
        Cus.getID() + "','" +
 	  		Cus.getName()  + "','"  +
 	  			Cus.getAddress() + "','"  +
 	  				Cus.getZipcode()  + "','"  +
                         Cus.getCity() + "','" +
-                        	Cus.getPhoneno();
+                        	Cus.getPhoneno() + "')";
 
        try{ // insert new Customer
           con.setAutoCommit(false);
@@ -93,13 +93,13 @@ public class DBCustomer implements IFDBCus{
 		int rc=-1;
 
 		String query="UPDATE Customer SET "+
-			"Id='"+ CusObj.getID() + "', "+
-		 	  "Name ='"+ CusObj.getName()+"', "+
-		 	  "address ='"+ CusObj.getAddress() + "', " +
-                          "zipCode ='"+ CusObj.getZipcode() + "', " +
-                          "city ='"+ CusObj.getCity() + "' " +
-                          "phoneNo='"+ CusObj.getPhoneno() + "', "+
-		          " WHERE id = '"+ CusObj.getID() + "'";
+			"c_Id='"+ CusObj.getID() + "', "+
+		 	  "cName ='"+ CusObj.getName()+"', "+
+		 	  "caddress ='"+ CusObj.getAddress() + "', " +
+                          "czip_Code ='"+ CusObj.getZipcode() + "', " +
+                          "ccity ='"+ CusObj.getCity() + "' " +
+                          "cphone_No='"+ CusObj.getPhoneno() + "', "+
+		          " WHERE c_id = '"+ CusObj.getID() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Customer
 	 		Statement stmt = con.createStatement();
@@ -118,7 +118,7 @@ public class DBCustomer implements IFDBCus{
 	{
                int rc=-1;
 	  
-	  	String query="DELETE FROM Customer WHERE id = '" +
+	  	String query="DELETE FROM Customer WHERE c_id = '" +
 				id + "'";
                 System.out.println(query);
 	  	try{ // delete from Customer
@@ -151,7 +151,7 @@ public class DBCustomer implements IFDBCus{
 	 	
 		while( results.next() ){
 	     	 Customer CusObj = new Customer();
-		 CusObj = buildCustomer(results);	
+	     	 CusObj = buildCustomer(results);	
                  list.add(CusObj);	
 		}//end while
                  stmt.close();     
@@ -192,7 +192,7 @@ public class DBCustomer implements IFDBCus{
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT Name, minit,lname,id, address, bdate,sex, salary, superid,dno  FROM Customer";
+	    String query="SELECT c_id, cname, caddress, czip_code, ccity, cphone_no  FROM Customer";
 		
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -203,12 +203,12 @@ public class DBCustomer implements IFDBCus{
 	private Customer buildCustomer(ResultSet results)
       {   Customer CusObj = new Customer();
           try{ // the columns from the table Customer  are used
-        	  	CusObj.setID(results.getString("id"));
-                CusObj.setName(results.getString("Name"));
-                CusObj.setAddress(results.getString("address"));
-                CusObj.setZipcode(results.getString("zipCode"));
-                CusObj.setCity(results.getString("city"));
-	  	CusObj.setPhoneno(results.getString("phoneNo"));
+        	  	CusObj.setID(results.getString("c_id"));
+                CusObj.setName(results.getString("cname"));
+                CusObj.setAddress(results.getString("caddress"));
+                CusObj.setZipcode(results.getString("czip_code"));
+                CusObj.setCity(results.getString("ccity"));
+	  	CusObj.setPhoneno(results.getString("cphone_no"));
           }
          catch(Exception e)
          {
