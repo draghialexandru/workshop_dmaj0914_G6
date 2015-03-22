@@ -44,7 +44,7 @@ public class CRUDgui extends JFrame{
 		panel_1.setToolTipText("");
 		panel_1.setName("");
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Customer", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(10, 11, 372, 240);
+		panel_1.setBounds(10, 11, 464, 206);
 		panel.add(panel_1);
 		
 		JLabel label = new JLabel("ID");
@@ -108,6 +108,7 @@ public class CRUDgui extends JFrame{
 					textZip.setText(customer.getZipcode());
 					textCity.setText(customer.getCity());
 					textPhone.setText(customer.getPhoneno());
+					lblError.setText("comand competed");
 				}
 				else
 				{
@@ -135,6 +136,7 @@ public class CRUDgui extends JFrame{
 					customer.setCity(textCity.getText());
 					customer.setPhoneno(textPhone.getText());
 					ctrCus.insertNew(customer);
+					lblError.setText("customer added");
 				}
 				else
 				{
@@ -156,14 +158,40 @@ public class CRUDgui extends JFrame{
 		
 		btnUpdate = new JButton("Update");
 		btnUpdate.setBounds(158, 78, 89, 23);
+		btnUpdate.addActionListener(new java.awt.event.ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(textID.getText().length()>0 && textName.getText().length()>0  && textAddress.getText().length()>0  && textZip.getText().length()>0 && textCity.getText().length()>0 && textPhone.getText().length()>0)
+				{
+					ctrCus.updateCus(textID.getText(), textName.getText(), textAddress.getText(), textZip.getText(), textCity.getText(), textPhone.getText());
+					lblError.setText("customer updated");
+				}
+				else
+				{
+					lblError.setText("fill all fields");
+				}
+			}
+			
+		});
 		panel_1.add(btnUpdate);
 		
 		btnDelete = new JButton("Delete");
 		btnDelete.setBounds(158, 106, 89, 23);
+		btnDelete.addActionListener(new java.awt.event.ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				lblError.setText("Sorry I want to have information about everyone");
+			}
+			
+		});
 		panel_1.add(btnDelete);
 		
 		lblError = new JLabel("");
-		lblError.setBounds(158, 138, 204, 48);
+		lblError.setBounds(158, 138, 296, 48);
 		panel_1.add(lblError);
 		
 		btnOk = new JButton("Ok");
