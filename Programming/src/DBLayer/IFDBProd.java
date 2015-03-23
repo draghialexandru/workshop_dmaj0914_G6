@@ -11,7 +11,7 @@ public interface IFDBProd {
     public ArrayList<Product> getAllProducts(boolean retriveAssociation);
     //get one Product having the P_id
     public Product findProduct(String P_id, boolean retriveAssociation);
-    public Product searchProductName( String name, boolean retriveAssociation);
+    public Product searchProductpName( String pName, boolean retriveAssociation);
   //  public Product searchProductP_id( String P_id, boolean retriveAssociation);
     //insert a new Product
     public int insertProduct(Product Prod);

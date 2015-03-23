@@ -5,101 +5,111 @@ package ModelLayer;
 public class Product {
 
 	//instance variables 
-	private String P_id;
-	private String name;
-	private double purchasePrice;
-	private double salesPrice;
-	private double rentPrice;
-	private String countryOfOrigin;
-	private String minStock;
-	private String productType;
+	private String pid;
+	private String pName;
+	private double pPP;
+	private double pSP;
+	private double pRP;
+	private String pCountry;
+	private String pMinStock;
+	private String Supplier_id;
+	private String Type;
 	
 public Product() {
         
     }
-    public Product(String P_id){
-        this.P_id = P_id;
+    public Product(String pid){
+        this.pid = pid;
     }
-    public Product (String P_id, String name, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin, String minStock,
-    		String productType)
+    public Product (String pid, String pName, double pPP, double pSP, double pRP, String pCountry, String pMinStock,String Supplier_id,
+    		String Type)
     {
-    	this.P_id = P_id;
-        this.name = name;
-        this.purchasePrice = purchasePrice;
-        this.salesPrice = salesPrice;
-        this.rentPrice = rentPrice;
-        this.countryOfOrigin = countryOfOrigin;
-        this.minStock = minStock;
-        this.productType = productType;
+    	this.pid = pid;
+        this.pName = pName;
+        this.pPP = pPP;
+        this.pSP = pSP;
+        this.pRP = pRP;
+        this.pCountry = pCountry;
+        this.pMinStock = pMinStock;
+        this.Supplier_id = Supplier_id;
+        this.Type = Type;
         
     }
     //set methods
-    public void setP_id(String P_id)
+    public void setpid(String pid)
     {
-    	this.P_id = P_id;
+    	this.pid = pid;
     }
-    public void setName(String name)
+    public void setpName(String pName)
     {
-        this.name = name;
+        this.pName = pName;
     }
-    public void setPurchasePrice(double purchasePrice)
+    public void setpPP(double pPP)
     {
-        this.purchasePrice = purchasePrice;
+        this.pPP = pPP;
     }
-    public void setSalesPrice (double salesPrice)
+    public void setpSP (double pSP)
     {
-        this.salesPrice = salesPrice;
+        this.pSP = pSP;
     }
     
-    public void setRentPrice (double rentPrice)
+    public void setpRP (double pRP)
     {
-        this.rentPrice = rentPrice;
+        this.pRP = pRP;
     }
-    public void setCountryOfOrigin (String countryOfOrigin)
+    public void setpCountry (String pCountry)
     {
-        this.countryOfOrigin = countryOfOrigin;
+        this.pCountry = pCountry;
     }
-    public void setMinStock (String minStock)
+    public void setpMinStock (String pMinStock)
     {
-    	this.minStock = minStock;
+    	this.pMinStock = pMinStock;
     }
-    public void setProductType(String productType)
+    public void setSupplier_id (String Supplier_id)
     {
-    	this.productType = productType;
+    	this.Supplier_id = Supplier_id;
+    }
+    public void setType(String Type)
+    {
+    	this.Type = Type;
     }
     
     //get method
-    public String getP_id()
+    public String getpid()
     {
-    	return P_id;
+    	return pid;
     }
-    public String getName()
+    public String getpName()
     {
-        return name;
+        return pName;
     }
-    public double getPurchasePrice()
+    public double getpPP()
     {
-        return purchasePrice;
+        return pPP;
     }
-    public double getSalesPrice()
+    public double getpSP()
     {
-        return salesPrice;
+        return pSP;
     }
 
-    public double getRentPrice()
+    public double getpRP()
     {
-        return rentPrice;
+        return pRP;
     }
-    public String getCountryOfOrigin()
+    public String getpCountry()
    {
-       return countryOfOrigin;
+       return pCountry;
    }
-    public String getMinStock()
+    public String getpMinStock()
     {
-    	return minStock;
+    	return pMinStock;
     }
-    public String getProductType()
+    public String getSupplier_id()
     {
-    	return productType;
+    	return Supplier_id;
+    }
+    public String getType()
+    {
+    	return Type;
     }
 }

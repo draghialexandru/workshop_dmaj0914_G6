@@ -26,30 +26,32 @@ public class DBProduct implements IFDBProd{
     {
         return miscWhere("", retriveAssociation);
     }
-    //get one Product having the P_id
-    public Product findProduct(String P_id, boolean retriveAssociation)
-    {   String wClause = "  P_id = '" + P_id + "'";
+    //get one Product having the pid
+    public Product findProduct(String pid, boolean retriveAssociation)
+    {   String wClause = "  pid = '" + pid + "'";
         return singleWhere(wClause, retriveAssociation);
     }
-    //find one Product having the Name
-    public Product searchProductName(String name, boolean retriveAssociation)
+    //find one Product having the pName
+    public Product searchProductpName(String pName, boolean retriveAssociation)
     {
 
-        System.out.println("SearchProduct " + name);
-        return singleWhere(name, retriveAssociation);
+        System.out.println("SearchProduct " + pName);
+        return singleWhere(pName, retriveAssociation);
     }
      //insert a new Product
     public int insertProduct(Product Prod)
     {  
        int rc = -1;
-	   String query="INSERT INTO Product(P_id,name,purchasePrice,salesPrice,rentPrice,countryOfOrigin,minStock)  VALUES('"+
-       Prod.getP_id() + "','" +
-	  		Prod.getName()  + "','"  +
-	  			Prod.getPurchasePrice() + "','"  +
-	  				Prod.getSalesPrice()  + "','"  +
-                        Prod.getRentPrice() + "','" +
-                        	Prod.getCountryOfOrigin() + "','" + 
-                        		Prod.getMinStock();
+	   String query="INSERT INTO Product(pid,pName,pPP,pSP,pRP,pCountry,pMinStock,supplier_id,type)  VALUES('"+
+       Prod.getpid() + "','" +
+	  		Prod.getpName()  + "','"  +
+	  			Prod.getpPP() + "','"  +
+	  				Prod.getpSP()  + "','"  +
+                        Prod.getpRP() + "','" +
+                        	Prod.getpCountry() + "','" + 
+                        		Prod.getpMinStock() + "','" + 
+                        			Prod.getSupplier_id() + "','" + 
+                        				Prod.getType();
 
        try{ // insert new Product
           con.setAutoCommit(false);
@@ -82,14 +84,16 @@ public class DBProduct implements IFDBProd{
 		int rc=-1;
 
 		String query="UPDATE Product SET "+
-			"P_id='"+ ProdObj.getP_id() + "', "+
-		 	  "Name ='"+ ProdObj.getName()+"', "+
-		 	  "purchasePrice ='"+ ProdObj.getPurchasePrice() + "', " +
-                          "salesPrice ='"+ ProdObj.getSalesPrice() + "', " +
-                          "rentPrice ='"+ ProdObj.getRentPrice() + "' " +
-                          "countryOfOrigin='"+ ProdObj.getCountryOfOrigin() + "', "+
-                          "minStock ='" + ProdObj.getMinStock() + "','" +
-		          " WHERE P_id = '"+ ProdObj.getP_id() + "'";
+			"pid='"+ ProdObj.getpid() + "', "+
+		 	  "pName ='"+ ProdObj.getpName()+"', "+
+		 	  "pPP ='"+ ProdObj.getpPP() + "', " +
+                          "pSP ='"+ ProdObj.getpSP() + "', " +
+                          "pRP ='"+ ProdObj.getpRP() + "' " +
+                          "pCountry='"+ ProdObj.getpCountry() + "', "+
+                          "pMinStock ='" + ProdObj.getpMinStock() + "','" +
+                          "supplier_id = '" + ProdObj.getSupplier_id()  + "','" + 
+                          "type = '" + ProdObj.getType() + "','" + 
+		          " WHERE pid = '"+ ProdObj.getpid() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Product
 	 		Statement stmt = con.createStatement();
@@ -104,12 +108,12 @@ public class DBProduct implements IFDBProd{
 		return(rc);
 	}
 	
-	public int delete(String P_id)
+	public int delete(String pid)
 	{
                int rc=-1;
 	  
-	  	String query="DELETE FROM Product WHERE P_id = '" +
-				P_id + "'";
+	  	String query="DELETE FROM Product WHERE pid = '" +
+				pid + "'";
                 System.out.println(query);
 	  	try{ // delete from Product
 	 		Statement stmt = con.createStatement();
@@ -182,7 +186,7 @@ public class DBProduct implements IFDBProd{
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT P_id,Name, purchasePrice, salesPrice,rentPrice, countryOfOrigin,minStock";
+	    String query="SELECT pid,pName, pPP, pSP,pRP, pCountry,pMinStock,supplier_id,type";
 		
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -193,13 +197,15 @@ public class DBProduct implements IFDBProd{
 	private Product buildProduct(ResultSet results)
       {   Product ProdObj = new Product();
           try{ // the columns from the table Product  are used
-        	  	ProdObj.setP_id(results.getString("P_id"));
-                ProdObj.setName(results.getString("Name"));
-                ProdObj.setPurchasePrice(results.getDouble("purchasePrice"));
-                ProdObj.setSalesPrice(results.getDouble("salesPrice"));
-                ProdObj.setRentPrice(results.getDouble("rentPrice"));
-                ProdObj.setCountryOfOrigin(results.getString("countryOfOrigin"));
-                ProdObj.setMinStock(results.getString("minStock"));
+        	  	ProdObj.setpid(results.getString("pid"));
+                ProdObj.setpName(results.getString("pName"));
+                ProdObj.setpPP(results.getDouble("pPP"));
+                ProdObj.setpSP(results.getDouble("pSP"));
+                ProdObj.setpRP(results.getDouble("pRP"));
+                ProdObj.setpCountry(results.getString("pCountry"));
+                ProdObj.setpMinStock(results.getString("pMinStock"));
+                ProdObj.setSupplier_id(results.getString("supplier_id"));
+                ProdObj.setType(results.getString("type"));
           }
          catch(Exception e)
          {
