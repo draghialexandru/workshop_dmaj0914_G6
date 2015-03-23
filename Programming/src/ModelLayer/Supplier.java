@@ -9,78 +9,78 @@ package ModelLayer;
 public class Supplier {
 
 	//instance variables 
-	private String id;
-	private String name;
-	private String address;
-	private String country;
-	private String phoneno;
-	private String email;
+	private String s_id;
+	private String sName;
+	private String sAddress;
+	private String sCountry;
+	private String sPhone;
+	private String sEmail;
 public Supplier() {
         
     }
-    public Supplier(String id){
-        this.id = id;
+    public Supplier(String s_id){
+        this.s_id = s_id;
     }
-    public Supplier (String id,String name, String address, String country, String phoneno, String email)
+    public Supplier (String sName, String sAddress, String sCountry, String sPhone, String sEmail,String s_id)
     {
-    	this.id = id;
-        this.name = name;
-        this.address = address;
-        this.country = country;
-        this.phoneno = phoneno;
-        this.email = email;
+        this.sName = sName;
+        this.sAddress = sAddress;
+        this.sCountry = sCountry;
+        this.sPhone = sPhone;
+        this.sEmail = sEmail;
+    	this.s_id = s_id;
     }
     //set methods
-    public void setID(String id)
+    public void sets_id(String s_id)
     {
-    	this.id = id;
+    	this.s_id = s_id;
     }
-    public void setName(String name)
+    public void setsName(String sName)
     {
-        this.name = name;
+        this.sName = sName;
     }
-    public void setAddress(String address)
+    public void setsAddress(String sAddress)
     {
-        this.address = address;
+        this.sAddress = sAddress;
     }
-    public void setcountry (String country)
+    public void setsCountry (String sCountry)
     {
-        this.country = country;
+        this.sCountry = sCountry;
     }
     
-    public void setPhoneno (String phoneno)
+    public void setsPhone (String sPhone)
     {
-        this.phoneno = phoneno;
+        this.sPhone = sPhone;
     }
-    public void setemail (String email)
+    public void setsEmail (String sEmail)
     {
-        this.email = email;
+        this.sEmail = sEmail;
     }
     
     //get method
-    public String getID()
+    public String gets_id()
     {
-    	return id;
+    	return s_id;
     }
-    public String getName()
+    public String getsName()
     {
-        return name;
+        return sName;
     }
-    public String getAddress()
+    public String getsAddress()
     {
-        return address;
+        return sAddress;
     }
-    public String getcountry()
+    public String getsCountry()
     {
-        return country;
+        return sCountry;
     }
 
-    public String getPhoneno()
+    public String getsPhone()
     {
-        return phoneno;
+        return sPhone;
     }
-    public String getEmail()
+    public String getsEmail()
    {
-       return email;
+       return sEmail;
    }
 }
