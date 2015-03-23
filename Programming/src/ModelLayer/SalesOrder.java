@@ -11,62 +11,82 @@ import java.util.ArrayList;
 public class SalesOrder {
 
 	//instance variables 
-	private String orderID;
+	private String o_id;
 	private ArrayList<ProductsAmount> productList = new ArrayList<ProductsAmount>();
-	private String date;
-	private String deliveryStatus;
-	private String deliveryDate;
+	private String odate;
+	private String cid;
+	private String oDelStatus;
+	private String oDelDate;
+	private String inNO;
 	private Customer customer;
 	
 public SalesOrder() {
         
     }
-    public SalesOrder(String orderID){
-        this.orderID = orderID;
+    public SalesOrder(String o_id){
+        this.o_id = o_id;
     }
-    public SalesOrder (String orderID, String date, String deliveryStatus, String deliveryDate)
+    public SalesOrder (String o_id, String odate,String cid, String oDelStatus, String oDelDate,String inNO)
     {
-        this.orderID = orderID;
-        this.date = date;
-        this.deliveryStatus = deliveryStatus;
-        this.deliveryDate = deliveryDate;
+        this.o_id = o_id;
+        this.odate = odate;
+        this.cid = cid;
+        this.oDelStatus = oDelStatus;
+        this.oDelDate = oDelDate;
+        this.inNO = inNO;
         
     }
     //set methods
-    public void setOrderID(String orderID)
+    public void seto_id(String o_id)
     {
-        this.orderID = orderID;
+        this.o_id = o_id;
     }
-    public void setDate(String date)
+    public void setodate(String odate)
     {
-        this.date = date;
+        this.odate = odate;
     }
-    public void setDeliveryStatus (String deliveryStatus)
+    public void setcid(String cid)
     {
-        this.deliveryStatus = deliveryStatus;
+    	this.cid = cid;
+    }
+    public void setoDelStatus (String oDelStatus)
+    {
+        this.oDelStatus = oDelStatus;
     }
     
-    public void setDeliveryDate (String deliveryDate)
+    public void setoDelDate (String oDelDate)
     {
-        this.deliveryDate = deliveryDate;
+        this.oDelDate = oDelDate;
+    }
+    public void setinNO(String inNO)
+    {
+    	this.inNO = inNO;
     }
     
     //get method
-    public String getOrderID()
+    public String geto_id()
     {
-        return orderID;
+        return o_id;
     }
-    public String getDate()
+    public String getodate()
     {
-        return date;
+        return odate;
     }
-    public String getDeliveryStatus()
+    public String getcid()
     {
-        return deliveryStatus;
+    	return cid;
+    }
+    public String getoDelStatus()
+    {
+        return oDelStatus;
     }
 
-    public String getDeliveryDate()
+    public String getoDelDate()
     {
-        return deliveryDate;
+        return oDelDate;
+    }
+    public String getinNO()
+    {
+    	return inNO;
     }
 }

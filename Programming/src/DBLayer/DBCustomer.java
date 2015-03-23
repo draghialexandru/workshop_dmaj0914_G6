@@ -36,14 +36,14 @@ public class DBCustomer implements IFDBCus{
     {   String wClause = "  cphone_no = '" + cphone_no + "'";
         return singleWhere(wClause, retriveAssociation);
     }
-    //find one Customer having the c_cname
+    //find one Customer having the c_name
     public Customer searchCustomercname(String cname, boolean retriveAssociation)
     {
 
         System.out.println("SearchCustomer " + cname);
         return singleWhere(cname, retriveAssociation);
     }
-  //find one customer having the c_cname
+  //find one customer having the c_name
     public Customer searchCustomerc_id(String attValue, boolean retriveAssociation)
     {
         String wClause = "c_id = '" + attValue + "'";
@@ -94,7 +94,7 @@ public class DBCustomer implements IFDBCus{
 
 		String query="UPDATE Customer SET "+
 			"c_id='"+ CusObj.getc_id() + "', "+
-		 	  "c_cname ='"+ CusObj.getcname()+"', "+
+		 	  "c_name ='"+ CusObj.getcname()+"', "+
 		 	  "caddress ='"+ CusObj.getcaddress() + "', " +
                           "czip_Code ='"+ CusObj.getczip_code() + "', " +
                           "ccity ='"+ CusObj.getccity() + "' " +
@@ -192,7 +192,7 @@ public class DBCustomer implements IFDBCus{
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT c_id, c_cname, caddress, czip_code, ccity, cphone_no  FROM Customer";
+	    String query="SELECT c_id, cname, caddress, czip_code, ccity, cphone_no  FROM Customer";
 		
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
