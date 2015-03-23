@@ -20,28 +20,30 @@ public class CtrProduct {
 	      return allProd;
 	}
 	
-	 public Product findByName(String Name)
+	 public Product findBypName(String pName)
 	    {
 	        IFDBProd Prod = new DBProduct();
-	        return Prod.searchProductName(Name, true);
+	        return Prod.searchProductpName(pName, true);
 	    }
 	 
-	 public Product findByID(String P_id)
+	 public Product findByID(String pid)
 	    {
 	        IFDBProd Prod = new DBProduct();
-	        return Prod.findProduct( P_id, true);
+	        return Prod.findProduct( pid, true);
 	    }
 	
-	 public int updateProduct (String P_id, String name, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin, String minStock ){
+	 public int updateProduct (String pid, String pName, double pPP, double pSP, double pRP, String pCountry, String pMinStock, String Supplier_id, String type ){
 		 IFDBProd Prod = new DBProduct();
 		 Product newProd = new Product();
-		 newProd.setP_id(P_id);
-		 newProd.setName(name);
-		 newProd.setPurchasePrice(purchasePrice);
-		 newProd.setSalesPrice(salesPrice);
-		 newProd.setRentPrice(rentPrice);
-		 newProd.setCountryOfOrigin(countryOfOrigin);
-		 newProd.setMinStock(minStock);
+		 newProd.setpid(pid);
+		 newProd.setpName(pName);
+		 newProd.setpPP(pPP);
+		 newProd.setpSP(pSP);
+		 newProd.setpRP(pRP);
+		 newProd.setpCountry(pCountry);
+		 newProd.setpMinStock(pMinStock);
+		 newProd.setSupplier_id(Supplier_id);
+		 newProd.setType(type);
 		 return Prod.updateProduct(newProd);
 	 }
 	 

@@ -11,8 +11,8 @@ public interface IFDBCus {
     public ArrayList<Customer> getAllCustomers(boolean retriveAssociation);
     //get one Customer having the id
     public Customer findCustomer(String CusID, boolean retriveAssociation);
-    public Customer searchCustomerName( String name, boolean retriveAssociation);
-    public Customer searchCustomerID( String id, boolean retriveAssociation);
+    public Customer searchCustomercname( String cname, boolean retriveAssociation);
+    public Customer searchCustomerc_id( String c_id, boolean retriveAssociation);
     //insert a new Customer
     public int insertCustomer(Customer Cus);
     //update information about an Customer

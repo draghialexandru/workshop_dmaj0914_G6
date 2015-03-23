@@ -101,13 +101,13 @@ public class CRUDgui extends JFrame{
 				// TODO Auto-generated method stub
 				if(textID.getText()!=null || textPhone.getText()!=null)
 				{
-					Customer customer = ctrCus.findByID(textID.getText());
+					Customer customer = ctrCus.findByc_id(textID.getText());
 					//System.out.println("done");
-					textName.setText(customer.getName());
-					textAddress.setText(customer.getAddress());
-					textZip.setText(customer.getZipcode());
-					textCity.setText(customer.getCity());
-					textPhone.setText(customer.getPhoneno());
+					textName.setText(customer.getcname());
+					textAddress.setText(customer.getcaddress());
+					textZip.setText(customer.getczip_code());
+					textCity.setText(customer.getccity());
+					textPhone.setText(customer.getcphone_no());
 					lblError.setText("comand competed");
 				}
 				else
@@ -129,12 +129,12 @@ public class CRUDgui extends JFrame{
 				if(textID.getText().length()>0 && textName.getText().length()>0  && textAddress.getText().length()>0  && textZip.getText().length()>0 && textCity.getText().length()>0 && textPhone.getText().length()>0)
 				{
 					Customer customer = new Customer();
-					customer.setID(textID.getText());
-					customer.setName(textName.getText());
-					customer.setAddress(textAddress.getText());
-					customer.setZipcode(textZip.getText());
-					customer.setCity(textCity.getText());
-					customer.setPhoneno(textPhone.getText());
+					customer.setc_id(textID.getText());
+					customer.setcname(textName.getText());
+					customer.setcaddress(textAddress.getText());
+					customer.setczip_code(textZip.getText());
+					customer.setccity(textCity.getText());
+					customer.setcphone_no(textPhone.getText());
 					ctrCus.insertNew(customer);
 					lblError.setText("customer added");
 				}

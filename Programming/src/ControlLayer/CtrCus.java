@@ -23,26 +23,26 @@ public class CtrCus {
       allCus = dbCus.getAllCustomers(false);
       return allCus;
     }
-    public Customer findByName(String Name)
+    public Customer findBycname(String cname)
     {
         IFDBCus dbCus = new DBCustomer();
-        return dbCus.searchCustomerName(Name, true);
+        return dbCus.searchCustomercname(cname, true);
     }
-      public Customer findByID(String ID)
+      public Customer findByc_id(String c_id)
     {
         IFDBCus dbCus = new DBCustomer();
-        return dbCus.searchCustomerID( ID, true);
+        return dbCus.searchCustomerc_id( c_id, true);
     }
-      public int updateCus(String id, String Name, String address, String zipCode, String city, String phoneno)
+      public int updateCus(String c_id, String cname, String caddress, String czip_code, String ccity, String cphone_no)
       {
           IFDBCus dbCus = new DBCustomer();
           Customer Cus = new Customer();
-          Cus.setID(id);
-          Cus.setName(Name);
-          Cus.setAddress(address);
-          Cus.setZipcode(zipCode);
-          Cus.setCity(city);
-          Cus.setPhoneno(phoneno);
+          Cus.setc_id(c_id);
+          Cus.setcname(cname);
+          Cus.setcaddress(caddress);
+          Cus.setczip_code(czip_code);
+          Cus.setccity(ccity);
+          Cus.setcphone_no(cphone_no);
           return  dbCus.updateCustomer(Cus);
           
           

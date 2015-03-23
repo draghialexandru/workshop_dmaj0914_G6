@@ -54,8 +54,8 @@ public class StartGUI extends JFrame{
 				if(textID.getText().length() > 0 )
 				{
 					CtrCus control = new CtrCus();
-					customer = control.findByID(textID.getText());
-					String x = customer.getID().substring(0, 4).intern();
+					customer = control.findByc_id(textID.getText());
+					String x = customer.getc_id().substring(0, 4).intern();
 					String y = textID.getText().substring(0, 4).intern();
 					System.out.println(x+y);
 					if(x == y)
@@ -66,7 +66,7 @@ public class StartGUI extends JFrame{
 					}
 					else
 					{
-						lblError.setText("wrong id" + customer.getID());
+						lblError.setText("wrong id" + customer.getc_id());
 					}
 				}
 				else

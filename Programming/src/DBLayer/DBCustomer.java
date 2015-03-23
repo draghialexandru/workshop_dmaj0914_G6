@@ -26,25 +26,25 @@ public class DBCustomer implements IFDBCus{
     {
         return miscWhere("", retriveAssociation);
     }
-    //get one Customer having the id
-    public Customer findCustomer(String Cusid, boolean retriveAssociation)
-    {   String wClause = "  c_id = '" + Cusid + "'";
+    //get one Customer having the c_id
+    public Customer findCustomer(String Cusc_id, boolean retriveAssociation)
+    {   String wClause = "  c_id = '" + Cusc_id + "'";
         return singleWhere(wClause, retriveAssociation);
     }
-  //get one Customer having the phoneNo
-    public Customer findCustomerPhoneNo(String phoneNo, boolean retriveAssociation)
-    {   String wClause = "  cphone_no = '" + phoneNo + "'";
+  //get one Customer having the cphone_no
+    public Customer findCustomercphone_no(String cphone_no, boolean retriveAssociation)
+    {   String wClause = "  cphone_no = '" + cphone_no + "'";
         return singleWhere(wClause, retriveAssociation);
     }
-    //find one Customer having the Name
-    public Customer searchCustomerName(String name, boolean retriveAssociation)
+    //find one Customer having the c_cname
+    public Customer searchCustomercname(String cname, boolean retriveAssociation)
     {
 
-        System.out.println("SearchCustomer " + name);
-        return singleWhere(name, retriveAssociation);
+        System.out.println("SearchCustomer " + cname);
+        return singleWhere(cname, retriveAssociation);
     }
-  //find one customer having the Name
-    public Customer searchCustomerID(String attValue, boolean retriveAssociation)
+  //find one customer having the c_cname
+    public Customer searchCustomerc_id(String attValue, boolean retriveAssociation)
     {
         String wClause = "c_id = '" + attValue + "'";
         System.out.println("Search Customer: " + wClause);
@@ -55,12 +55,12 @@ public class DBCustomer implements IFDBCus{
     {  
        int rc = -1;
 	   String query="INSERT INTO Customer(c_id,cname,caddress,czip_code,ccity,cphone_no)  VALUES('"+
-       Cus.getID() + "','" +
-	  		Cus.getName()  + "','"  +
-	  			Cus.getAddress() + "','"  +
-	  				Cus.getZipcode()  + "','"  +
-                        Cus.getCity() + "','" +
-                        	Cus.getPhoneno() + "')";
+       Cus.getc_id() + "','" +
+	  		Cus.getcname()  + "','"  +
+	  			Cus.getcaddress() + "','"  +
+	  				Cus.getczip_code()  + "','"  +
+                        Cus.getccity() + "','" +
+                        	Cus.getcphone_no() + "')";
 
        try{ // insert new Customer
           con.setAutoCommit(false);
@@ -93,13 +93,13 @@ public class DBCustomer implements IFDBCus{
 		int rc=-1;
 
 		String query="UPDATE Customer SET "+
-			"c_Id='"+ CusObj.getID() + "', "+
-		 	  "cName ='"+ CusObj.getName()+"', "+
-		 	  "caddress ='"+ CusObj.getAddress() + "', " +
-                          "czip_Code ='"+ CusObj.getZipcode() + "', " +
-                          "ccity ='"+ CusObj.getCity() + "' " +
-                          "cphone_No='"+ CusObj.getPhoneno() + "', "+
-		          " WHERE c_id = '"+ CusObj.getID() + "'";
+			"c_id='"+ CusObj.getc_id() + "', "+
+		 	  "c_cname ='"+ CusObj.getcname()+"', "+
+		 	  "caddress ='"+ CusObj.getcaddress() + "', " +
+                          "czip_Code ='"+ CusObj.getczip_code() + "', " +
+                          "ccity ='"+ CusObj.getccity() + "' " +
+                          "cphone_No='"+ CusObj.getcphone_no() + "', "+
+		          " WHERE c_id = '"+ CusObj.getc_id() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Customer
 	 		Statement stmt = con.createStatement();
@@ -114,12 +114,12 @@ public class DBCustomer implements IFDBCus{
 		return(rc);
 	}
 	
-	public int delete(String id)
+	public int delete(String c_id)
 	{
                int rc=-1;
 	  
 	  	String query="DELETE FROM Customer WHERE c_id = '" +
-				id + "'";
+				c_id + "'";
                 System.out.println(query);
 	  	try{ // delete from Customer
 	 		Statement stmt = con.createStatement();
@@ -192,7 +192,7 @@ public class DBCustomer implements IFDBCus{
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT c_id, cname, caddress, czip_code, ccity, cphone_no  FROM Customer";
+	    String query="SELECT c_id, c_cname, caddress, czip_code, ccity, cphone_no  FROM Customer";
 		
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -203,12 +203,12 @@ public class DBCustomer implements IFDBCus{
 	private Customer buildCustomer(ResultSet results)
       {   Customer CusObj = new Customer();
           try{ // the columns from the table Customer  are used
-        	  	CusObj.setID(results.getString("c_id"));
-                CusObj.setName(results.getString("cname"));
-                CusObj.setAddress(results.getString("caddress"));
-                CusObj.setZipcode(results.getString("czip_code"));
-                CusObj.setCity(results.getString("ccity"));
-	  	CusObj.setPhoneno(results.getString("cphone_no"));
+        	  	CusObj.setc_id(results.getString("c_id"));
+                CusObj.setcname(results.getString("cname"));
+                CusObj.setcaddress(results.getString("caddress"));
+                CusObj.setczip_code(results.getString("czip_code"));
+                CusObj.setccity(results.getString("ccity"));
+	  	CusObj.setcphone_no(results.getString("cphone_no"));
           }
          catch(Exception e)
          {

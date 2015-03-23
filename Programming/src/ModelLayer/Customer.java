@@ -9,74 +9,74 @@ package ModelLayer;
 public class Customer {
 
 	//instance variables 
-	private String id;
-	private String name;
-	private String address;
-	private String zipCode;
-	private String city;
-	private String phoneno;
+	private String c_id;
+	private String cname;
+	private String caddress;
+	private String czip_code;
+	private String ccity;
+	private String cphone_no;
 public Customer() {
         
     }
-    public Customer(String id){
-        this.id = id;
+    public Customer(String c_id){
+        this.c_id = c_id;
     }
-    public Customer (String id,String name, String address, String zipCode, String city, String phoneno)
+    public Customer (String c_id,String cname, String caddress, String czip_code, String ccity, String cphone_no)
     {
-    	this.id = id;
-        this.name = name;
-        this.address = address;
-        this.zipCode = zipCode;
-        this.city = city;
-        this.phoneno = phoneno;
+    	this.c_id = c_id;
+        this.cname = cname;
+        this.caddress = caddress;
+        this.czip_code = czip_code;
+        this.ccity = ccity;
+        this.cphone_no = cphone_no;
     }
     //set methods
-    public void setID(String id)
+    public void setc_id(String c_id)
     {
-    	this.id = id;
+    	this.c_id = c_id;
     }
-    public void setName(String name)
+    public void setcname(String cname)
     {
-        this.name = name;
+        this.cname = cname;
     }
-    public void setAddress(String address)
+    public void setcaddress(String caddress)
     {
-        this.address = address;
+        this.caddress = caddress;
     }
-    public void setZipcode (String zipCode){
-        this.zipCode = zipCode;
+    public void setczip_code (String czip_code){
+        this.czip_code = czip_code;
     }
-    public void setCity (String city){
-        this.city = city;
+    public void setccity (String ccity){
+        this.ccity = ccity;
     }
-    public void setPhoneno (String phoneno){
-        this.phoneno = phoneno;
+    public void setcphone_no (String cphone_no){
+        this.cphone_no = cphone_no;
     }
     
     //get method
-    public String getID()
+    public String getc_id()
     {
-    	return id;
+    	return c_id;
     }
-    public String getName()
+    public String getcname()
     {
-        return name;
+        return cname;
     }
-    public String getAddress()
+    public String getcaddress()
     {
-        return address;
+        return caddress;
     }
-    public String getZipcode()
+    public String getczip_code()
     {
-        return zipCode;
+        return czip_code;
     }
-     public String getCity()
+     public String getccity()
     {
-        return city;
+        return ccity;
     }
-    public String getPhoneno()
+    public String getcphone_no()
     {
-        return phoneno;
+        return cphone_no;
     }
     
 }
