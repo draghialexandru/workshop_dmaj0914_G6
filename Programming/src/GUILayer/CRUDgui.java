@@ -185,6 +185,11 @@ public class CRUDgui extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				lblError.setText("Sorry I want to have information about everyone");
+				textName.setText("");
+				textAddress.setText("");
+				textZip.setText("");
+				textCity.setText("");
+				textPhone.setText("");
 			}
 			
 		});

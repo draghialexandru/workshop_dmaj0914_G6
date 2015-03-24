@@ -28,7 +28,7 @@ public class CtrCus {
         IFDBCus dbCus = new DBCustomer();
         return dbCus.searchCustomercname(cname, true);
     }
-      public Customer findByc_id(String c_id)
+      public Customer findByID(String c_id)
     {
         IFDBCus dbCus = new DBCustomer();
         return dbCus.searchCustomerc_id( c_id, true);
@@ -37,12 +37,12 @@ public class CtrCus {
       {
           IFDBCus dbCus = new DBCustomer();
           Customer Cus = new Customer();
-          Cus.setc_id(c_id);
-          Cus.setcname(cname);
-          Cus.setcaddress(caddress);
-          Cus.setczip_code(czip_code);
-          Cus.setccity(ccity);
-          Cus.setcphone_no(cphone_no);
+          Cus.setID(c_id);
+          Cus.setName(cname);
+          Cus.setAddress(caddress);
+          Cus.setZipcode(czip_code);
+          Cus.setCity(ccity);
+          Cus.setPhoneno(cphone_no);
           return  dbCus.updateCustomer(Cus);
           
           

@@ -55,12 +55,12 @@ public class DBCustomer implements IFDBCus{
     {  
        int rc = -1;
 	   String query="INSERT INTO Customer(c_id,cname,caddress,czip_code,ccity,cphone_no)  VALUES('"+
-       Cus.getc_id() + "','" +
-	  		Cus.getcname()  + "','"  +
-	  			Cus.getcaddress() + "','"  +
-	  				Cus.getczip_code()  + "','"  +
-                        Cus.getccity() + "','" +
-                        	Cus.getcphone_no() + "')";
+       Cus.getID() + "','" +
+	  		Cus.getName()  + "','"  +
+	  			Cus.getAddress() + "','"  +
+	  				Cus.getZipcode()  + "','"  +
+                        Cus.getCity() + "','" +
+                        	Cus.getPhoneno() + "')";
 
        try{ // insert new Customer
           con.setAutoCommit(false);
@@ -93,13 +93,13 @@ public class DBCustomer implements IFDBCus{
 		int rc=-1;
 
 		String query="UPDATE Customer SET "+
-			"c_id='"+ CusObj.getc_id() + "', "+
-		 	  "c_name ='"+ CusObj.getcname()+"', "+
-		 	  "caddress ='"+ CusObj.getcaddress() + "', " +
-                          "czip_Code ='"+ CusObj.getczip_code() + "', " +
-                          "ccity ='"+ CusObj.getccity() + "' " +
-                          "cphone_No='"+ CusObj.getcphone_no() + "', "+
-		          " WHERE c_id = '"+ CusObj.getc_id() + "'";
+			"c_id='"+ CusObj.getID() + "', "+
+		 	  "cname ='"+ CusObj.getName()+"', "+
+		 	  "caddress ='"+ CusObj.getAddress() + "', " +
+                          "czip_Code ='"+ CusObj.getZipcode() + "', " +
+                          "ccity ='"+ CusObj.getCity() + "', " +
+                          "cphone_no ='"+ CusObj.getPhoneno() + "' "+
+		          " WHERE c_id = '"+ CusObj.getID() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Customer
 	 		Statement stmt = con.createStatement();
@@ -203,12 +203,12 @@ public class DBCustomer implements IFDBCus{
 	private Customer buildCustomer(ResultSet results)
       {   Customer CusObj = new Customer();
           try{ // the columns from the table Customer  are used
-        	  	CusObj.setc_id(results.getString("c_id"));
-                CusObj.setcname(results.getString("cname"));
-                CusObj.setcaddress(results.getString("caddress"));
-                CusObj.setczip_code(results.getString("czip_code"));
-                CusObj.setccity(results.getString("ccity"));
-	  	CusObj.setcphone_no(results.getString("cphone_no"));
+        	  	CusObj.setID(results.getString("c_id"));
+                CusObj.setName(results.getString("cname"));
+                CusObj.setAddress(results.getString("caddress"));
+                CusObj.setZipcode(results.getString("czip_code"));
+                CusObj.setCity(results.getString("ccity"));
+	  	CusObj.setPhoneno(results.getString("cphone_no"));
           }
          catch(Exception e)
          {

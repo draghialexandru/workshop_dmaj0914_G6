@@ -31,50 +31,50 @@ public Customer() {
         this.cphone_no = cphone_no;
     }
     //set methods
-    public void setc_id(String c_id)
+    public void setID(String c_id)
     {
     	this.c_id = c_id;
     }
-    public void setcname(String cname)
+    public void setName(String cname)
     {
         this.cname = cname;
     }
-    public void setcaddress(String caddress)
+    public void setAddress(String caddress)
     {
         this.caddress = caddress;
     }
-    public void setczip_code (String czip_code){
+    public void setZipcode (String czip_code){
         this.czip_code = czip_code;
     }
-    public void setccity (String ccity){
+    public void setCity (String ccity){
         this.ccity = ccity;
     }
-    public void setcphone_no (String cphone_no){
+    public void setPhoneno (String cphone_no){
         this.cphone_no = cphone_no;
     }
     
     //get method
-    public String getc_id()
+    public String getID()
     {
     	return c_id;
     }
-    public String getcname()
+    public String getName()
     {
         return cname;
     }
-    public String getcaddress()
+    public String getAddress()
     {
         return caddress;
     }
-    public String getczip_code()
+    public String getZipcode()
     {
         return czip_code;
     }
-     public String getccity()
+     public String getCity()
     {
         return ccity;
     }
-    public String getcphone_no()
+    public String getPhoneno()
     {
         return cphone_no;
     }
