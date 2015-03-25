@@ -14,6 +14,7 @@ import java.awt.Canvas;
 import javax.swing.JMenu;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
+import java.awt.Color;
 
 public class MoreOptionsGUI extends JFrame {
 	private JTextField textID;
@@ -44,7 +45,7 @@ public class MoreOptionsGUI extends JFrame {
 		
 		//this.moreOptions = moreOptions;
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 500, 300);
+		this.setBounds(100, 100, 500, 372);
 		this.setTitle("Western Style Ltd.");
 		
 		JPanel panel = new JPanel();
@@ -52,7 +53,7 @@ public class MoreOptionsGUI extends JFrame {
 		panel.setLayout(null);
 		
 		btnOk = new JButton("OK");
-		btnOk.setBounds(385, 228, 89, 23);
+		btnOk.setBounds(385, 299, 89, 23);
 		btnOk.addActionListener(new java.awt.event.ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -68,7 +69,7 @@ public class MoreOptionsGUI extends JFrame {
 		panel_1.setBorder(new TitledBorder(null, "Product", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_1.setToolTipText("");
 		panel_1.setName("");
-		panel_1.setBounds(10, 11, 232, 208);
+		panel_1.setBounds(10, 11, 232, 262);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -113,9 +114,9 @@ public class MoreOptionsGUI extends JFrame {
 		textField_3.setBounds(62, 135, 86, 20);
 		panel_1.add(textField_3);
 		
-		JLabel lblSuplyer = new JLabel("Suplyer");
-		lblSuplyer.setBounds(10, 138, 53, 14);
-		panel_1.add(lblSuplyer);
+		JLabel lblSupplier = new JLabel("Supplier");
+		lblSupplier.setBounds(10, 138, 53, 14);
+		panel_1.add(lblSupplier);
 		
 		btnFind = new JButton("Find");
 		btnFind.setBounds(109, 174, 89, 23);
@@ -125,8 +126,16 @@ public class MoreOptionsGUI extends JFrame {
 		btnAdd.setBounds(10, 174, 89, 23);
 		panel_1.add(btnAdd);
 		
+		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setBounds(10, 208, 89, 23);
+		panel_1.add(btnUpdate);
+		
+		JButton btnRemove = new JButton("Remove");
+		btnRemove.setBounds(109, 208, 89, 23);
+		panel_1.add(btnRemove);
+		
 		btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(10, 228, 89, 23);
+		btnCancel.setBounds(10, 299, 89, 23);
 		btnCancel.addActionListener(new java.awt.event.ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -140,8 +149,8 @@ public class MoreOptionsGUI extends JFrame {
 		panel_2.setLayout(null);
 		panel_2.setToolTipText("");
 		panel_2.setName("");
-		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Suplyer", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBounds(242, 11, 232, 208);
+		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Supplier", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_2.setBounds(242, 11, 232, 262);
 		panel.add(panel_2);
 		
 		lblName_1 = new JLabel("Name");
@@ -196,6 +205,14 @@ public class MoreOptionsGUI extends JFrame {
 		button_1 = new JButton("Add");
 		button_1.setBounds(10, 174, 89, 23);
 		panel_2.add(button_1);
+		
+		JButton btnUpdate_1 = new JButton("Update");
+		btnUpdate_1.setBounds(10, 208, 89, 23);
+		panel_2.add(btnUpdate_1);
+		
+		JButton btnRemove_1 = new JButton("Remove");
+		btnRemove_1.setBounds(109, 208, 89, 23);
+		panel_2.add(btnRemove_1);
 	}
 	
 	public void setOptions(MoreOptionsGUI moreOptions)
