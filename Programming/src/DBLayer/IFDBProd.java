@@ -12,10 +12,13 @@ public interface IFDBProd {
     //get one Product having the P_id
     public Product findProduct(String P_id, boolean retriveAssociation);
     public Product searchProductpName( String pName, boolean retriveAssociation);
-  //  public Product searchProductP_id( String P_id, boolean retriveAssociation);
+    public Product searchProductP_id( String pid, boolean retriveAssociation);
     //insert a new Product
     public int insertProduct(Product Prod);
     //update information about an Product
     public int updateProduct(Product Prod);
+    //delete customer
+    public int delete(String pid);
+    
     
 }

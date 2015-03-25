@@ -1,5 +1,11 @@
 package GUILayer;
 
+import ControlLayer.CtrProduct;
+import ModelLayer.Product;
+
+import ControlLayer.CtrSupp;
+import ModelLayer.Supplier;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,11 +24,11 @@ import java.awt.Color;
 
 public class MoreOptionsGUI extends JFrame {
 	private JTextField textID;
-	private JTextField textField;
+	private JTextField textName;
 	private MoreOptionsGUI moreOptions;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textQuant;
+	private JTextField textPrice;
+	private JTextField textSupp;
 	private JButton btnFind;
 	private JButton btnAdd;
 	private JButton btnCancel;
@@ -40,6 +46,8 @@ public class MoreOptionsGUI extends JFrame {
 	private JLabel lblPaid;
 	private JButton button;
 	private JButton button_1;
+	private JLabel lblError;
+	private CtrProduct ctrProduct = new CtrProduct();
 	
 	public MoreOptionsGUI() {
 		
@@ -86,33 +94,33 @@ public class MoreOptionsGUI extends JFrame {
 		lblName.setBounds(10, 53, 42, 14);
 		panel_1.add(lblName);
 		
-		textField = new JTextField();
-		textField.setBounds(62, 50, 86, 20);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		textName = new JTextField();
+		textName.setBounds(62, 50, 86, 20);
+		panel_1.add(textName);
+		textName.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(62, 79, 86, 20);
-		panel_1.add(textField_1);
+		textQuant = new JTextField();
+		textQuant.setColumns(10);
+		textQuant.setBounds(62, 79, 86, 20);
+		panel_1.add(textQuant);
 		
 		JLabel lblQuantity = new JLabel("Quantity");
 		lblQuantity.setBounds(10, 82, 53, 14);
 		panel_1.add(lblQuantity);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(62, 107, 86, 20);
-		panel_1.add(textField_2);
+		textPrice = new JTextField();
+		textPrice.setColumns(10);
+		textPrice.setBounds(62, 107, 86, 20);
+		panel_1.add(textPrice);
 		
 		JLabel lblPrice = new JLabel("Price");
 		lblPrice.setBounds(10, 110, 42, 14);
 		panel_1.add(lblPrice);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(62, 135, 86, 20);
-		panel_1.add(textField_3);
+		textSupp = new JTextField();
+		textSupp.setColumns(10);
+		textSupp.setBounds(62, 135, 86, 20);
+		panel_1.add(textSupp);
 		
 		JLabel lblSupplier = new JLabel("Supplier");
 		lblSupplier.setBounds(10, 138, 53, 14);
@@ -120,6 +128,29 @@ public class MoreOptionsGUI extends JFrame {
 		
 		btnFind = new JButton("Find");
 		btnFind.setBounds(109, 174, 89, 23);
+		btnFind.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if (textID.getText()!=null){
+					Product product = ctrProduct.findByID(textID.getText());
+					
+					textName.setText(product.getpName());
+					textQuant.setText(product.getpMinStock());
+					textPrice.setText(Double.toString(product.getpSP()));
+					textSupp.setText(product.getSupplier_id());
+					lblError.setText("command completed");
+				}
+				else 
+				{
+					lblError.setText("Please insert product ID");
+				}
+				
+			}
+			
+			
+		});
 		panel_1.add(btnFind);
 		
 		btnAdd = new JButton("Add");

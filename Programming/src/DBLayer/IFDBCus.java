@@ -17,5 +17,7 @@ public interface IFDBCus {
     public int insertCustomer(Customer Cus);
     //update information about an Customer
     public int updateCustomer(Customer Cus);
+    //delete customer
+    public int delete(String c_id);
     
 }

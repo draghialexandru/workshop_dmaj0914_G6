@@ -53,4 +53,9 @@ public class CtrCus {
            dbCus.insertCustomer(CusObj);
       }
     
+      public void delete(String c_id)
+      {
+    	  IFDBCus dbCus = new DBCustomer();
+    	  dbCus.delete(c_id);
+      }
 }

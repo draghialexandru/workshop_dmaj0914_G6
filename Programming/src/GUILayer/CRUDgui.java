@@ -108,7 +108,7 @@ public class CRUDgui extends JFrame{
 					textZip.setText(customer.getZipcode());
 					textCity.setText(customer.getCity());
 					textPhone.setText(customer.getPhoneno());
-					lblError.setText("comand competed");
+					lblError.setText("command completed");
 				}
 				else
 				{
@@ -184,13 +184,25 @@ public class CRUDgui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				lblError.setText("Sorry I want to have information about everyone");
+				if(textID.getText().length()>0){
+					ctrCus.delete(textID.getText());
+					
+					lblError.setText("Customer was deleted");
+					textName.setText("");
+					textAddress.setText("");
+					textZip.setText("");
+					textCity.setText("");
+					textPhone.setText("");
+				}
+				else{
+				lblError.setText("Sorry I couldn't delete customer");
 				textName.setText("");
 				textAddress.setText("");
 				textZip.setText("");
 				textCity.setText("");
 				textPhone.setText("");
 			}
+		}
 			
 		});
 		panel_1.add(btnDelete);

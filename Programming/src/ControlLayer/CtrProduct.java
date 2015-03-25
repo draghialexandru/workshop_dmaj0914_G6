@@ -29,7 +29,7 @@ public class CtrProduct {
 	 public Product findByID(String pid)
 	    {
 	        IFDBProd Prod = new DBProduct();
-	        return Prod.findProduct( pid, true);
+	        return Prod.searchProductP_id( pid, true);
 	    }
 	
 	 public int updateProduct (String pid, String pName, double pPP, double pSP, double pRP, String pCountry, String pMinStock, String Supplier_id, String type ){
@@ -53,4 +53,9 @@ public class CtrProduct {
 		 Prod.insertProduct(prodObj);
 		 
 	 }
+	 public void delete(String pid)
+     {
+   	  IFDBProd Prod = new DBProduct();
+   	  Prod.delete(pid);
+     }
 }

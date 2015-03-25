@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 import ModelLayer.Product;
 
 /**
@@ -38,11 +39,18 @@ public class DBProduct implements IFDBProd{
         System.out.println("SearchProduct " + pName);
         return singleWhere(pName, retriveAssociation);
     }
+    //find product by id
+    public Product searchProductP_id(String pid, boolean retriveAssociation)
+    {
+        String wClause = "pid = '" + pid + "'";
+        System.out.println("Search Product: " + wClause);
+        return singleWhere(wClause, retriveAssociation);
+    }
      //insert a new Product
     public int insertProduct(Product Prod)
     {  
        int rc = -1;
-	   String query="INSERT INTO Product(pid,pName,pPP,pSP,pRP,pCountry,pMinStock,supplier_id,type)  VALUES('"+
+	   String query="INSERT INTO Product(pid,pName,purchaseP,sellP,rentP,pCountry,pMinStock,supplier_id,type)  VALUES('"+
        Prod.getpid() + "','" +
 	  		Prod.getpName()  + "','"  +
 	  			Prod.getpPP() + "','"  +
@@ -86,9 +94,9 @@ public class DBProduct implements IFDBProd{
 		String query="UPDATE Product SET "+
 			"pid='"+ ProdObj.getpid() + "', "+
 		 	  "pName ='"+ ProdObj.getpName()+"', "+
-		 	  "pPP ='"+ ProdObj.getpPP() + "', " +
-                          "pSP ='"+ ProdObj.getpSP() + "', " +
-                          "pRP ='"+ ProdObj.getpRP() + "' " +
+		 	  "purchaseP ='"+ ProdObj.getpPP() + "', " +
+                          "sellP ='"+ ProdObj.getpSP() + "', " +
+                          "rentP ='"+ ProdObj.getpRP() + "' " +
                           "pCountry='"+ ProdObj.getpCountry() + "', "+
                           "pMinStock ='" + ProdObj.getpMinStock() + "','" +
                           "supplier_id = '" + ProdObj.getSupplier_id()  + "','" + 
@@ -186,7 +194,7 @@ public class DBProduct implements IFDBProd{
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT pid,pName, pPP, pSP,pRP, pCountry,pMinStock,supplier_id,type";
+	    String query="SELECT pid,pName, purchaseP, sellP, rentP, pCountry,pMinStock,supplier_id FROM Product";
 		
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
@@ -199,9 +207,9 @@ public class DBProduct implements IFDBProd{
           try{ // the columns from the table Product  are used
         	  	ProdObj.setpid(results.getString("pid"));
                 ProdObj.setpName(results.getString("pName"));
-                ProdObj.setpPP(results.getDouble("pPP"));
-                ProdObj.setpSP(results.getDouble("pSP"));
-                ProdObj.setpRP(results.getDouble("pRP"));
+                ProdObj.setpPP(results.getDouble("purchaseP"));
+                ProdObj.setpSP(results.getDouble("sellP"));
+                ProdObj.setpRP(results.getDouble("rentP"));
                 ProdObj.setpCountry(results.getString("pCountry"));
                 ProdObj.setpMinStock(results.getString("pMinStock"));
                 ProdObj.setSupplier_id(results.getString("supplier_id"));

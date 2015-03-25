@@ -43,7 +43,7 @@ public class DBCustomer implements IFDBCus{
         System.out.println("SearchCustomer " + cname);
         return singleWhere(cname, retriveAssociation);
     }
-  //find one customer having the c_name
+  //find one customer having the c_id
     public Customer searchCustomerc_id(String attValue, boolean retriveAssociation)
     {
         String wClause = "c_id = '" + attValue + "'";
