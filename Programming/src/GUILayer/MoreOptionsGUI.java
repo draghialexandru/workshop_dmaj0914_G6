@@ -134,13 +134,19 @@ public class MoreOptionsGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if (textID.getText()!=null){
-					Product product = ctrProduct.findByID(textID.getText());
-					
-					textName.setText(product.getpName());
-					textQuant.setText(product.getpMinStock());
-					textPrice.setText(Double.toString(product.getpSP()));
-					textSupp.setText(product.getSupplier_id());
-					lblError.setText("command completed");
+					try{
+						Product product = ctrProduct.findByID(textID.getText());
+	
+						textName.setText(product.getpName());
+						textQuant.setText(product.getpMinStock());
+						textPrice.setText(Double.toString(product.getpSP()));
+						textSupp.setText(product.getSupplier_id());
+						//System.out.println("working");
+					}
+					catch(Exception e)
+					{
+						System.out.println(e);
+					}
 				}
 				else 
 				{

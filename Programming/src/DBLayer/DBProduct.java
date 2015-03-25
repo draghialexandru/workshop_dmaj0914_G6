@@ -194,7 +194,7 @@ public class DBProduct implements IFDBProd{
 	//method to build the query
 	private String buildQuery(String wClause)
 	{
-	    String query="SELECT pid,pName, purchaseP, sellP, rentP, pCountry,pMinStock,supplier_id FROM Product";
+	    String query="SELECT pid,pName, purchaseP, sellP, rentP, pCountry,pMinStock,supplier_id, type FROM Product";
 		
 		if (wClause.length()>0)
 			query=query+" WHERE "+ wClause;
