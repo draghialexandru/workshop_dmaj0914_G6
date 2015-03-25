@@ -26,8 +26,8 @@ public class MoreOptionsGUI extends JFrame {
 	private JTextField textID;
 	private JTextField textName;
 	private MoreOptionsGUI moreOptions;
-	private JTextField textQuant;
-	private JTextField textPrice;
+	private JTextField textCountry;
+	private JTextField textType;
 	private JTextField textSupp;
 	private JButton btnFind;
 	private JButton btnAdd;
@@ -48,12 +48,18 @@ public class MoreOptionsGUI extends JFrame {
 	private JButton button_1;
 	private JLabel lblError;
 	private CtrProduct ctrProduct = new CtrProduct();
+	private JButton btnUpdate;
+	private JButton btnRemove;
+	private JTextField textBuy;
+	private JTextField textSell;
+	private JTextField textRent;
+	private JTextField textMinStock;
 	
 	public MoreOptionsGUI() {
 		
 		//this.moreOptions = moreOptions;
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 500, 372);
+		this.setBounds(100, 100, 582, 372);
 		this.setTitle("Western Style Ltd.");
 		
 		JPanel panel = new JPanel();
@@ -77,7 +83,7 @@ public class MoreOptionsGUI extends JFrame {
 		panel_1.setBorder(new TitledBorder(null, "Product", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_1.setToolTipText("");
 		panel_1.setName("");
-		panel_1.setBounds(10, 11, 232, 262);
+		panel_1.setBounds(10, 11, 304, 277);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -99,21 +105,21 @@ public class MoreOptionsGUI extends JFrame {
 		panel_1.add(textName);
 		textName.setColumns(10);
 		
-		textQuant = new JTextField();
-		textQuant.setColumns(10);
-		textQuant.setBounds(62, 79, 86, 20);
-		panel_1.add(textQuant);
+		textCountry = new JTextField();
+		textCountry.setColumns(10);
+		textCountry.setBounds(62, 79, 86, 20);
+		panel_1.add(textCountry);
 		
-		JLabel lblQuantity = new JLabel("Quantity");
+		JLabel lblQuantity = new JLabel("Country");
 		lblQuantity.setBounds(10, 82, 53, 14);
 		panel_1.add(lblQuantity);
 		
-		textPrice = new JTextField();
-		textPrice.setColumns(10);
-		textPrice.setBounds(62, 107, 86, 20);
-		panel_1.add(textPrice);
+		textType = new JTextField();
+		textType.setColumns(10);
+		textType.setBounds(62, 107, 86, 20);
+		panel_1.add(textType);
 		
-		JLabel lblPrice = new JLabel("Price");
+		JLabel lblPrice = new JLabel("Type");
 		lblPrice.setBounds(10, 110, 42, 14);
 		panel_1.add(lblPrice);
 		
@@ -127,7 +133,7 @@ public class MoreOptionsGUI extends JFrame {
 		panel_1.add(lblSupplier);
 		
 		btnFind = new JButton("Find");
-		btnFind.setBounds(109, 174, 89, 23);
+		btnFind.setBounds(205, 134, 89, 23);
 		btnFind.addActionListener(new java.awt.event.ActionListener() {
 
 			@Override
@@ -138,9 +144,13 @@ public class MoreOptionsGUI extends JFrame {
 						Product product = ctrProduct.findByID(textID.getText());
 	
 						textName.setText(product.getpName());
-						textQuant.setText(product.getpMinStock());
-						textPrice.setText(Double.toString(product.getpSP()));
+						textCountry.setText(product.getpCountry());
+						textType.setText(product.getType());
 						textSupp.setText(product.getSupplier_id());
+						textBuy.setText(Double.toString(product.getpPP()));
+						textSell.setText(Double.toString(product.getpSP()));
+						textRent.setText(Double.toString(product.getpRP()));
+						textMinStock.setText(product.getpMinStock());
 						//System.out.println("working");
 					}
 					catch(Exception e)
@@ -160,16 +170,133 @@ public class MoreOptionsGUI extends JFrame {
 		panel_1.add(btnFind);
 		
 		btnAdd = new JButton("Add");
-		btnAdd.setBounds(10, 174, 89, 23);
+		btnAdd.setBounds(10, 243, 89, 23);
+		btnAdd.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if (textID.getText().length()>0 && textName.getText().length()>0 && textCountry.getText().length()>0 && textType.getText().length()>0 && textSupp.getText().length()>0 && textBuy.getText().length()>0 && textSell.getText().length()>0 && textRent.getText().length()>0 && textMinStock.getText().length()>0){
+						Product product = new Product();
+						product.setpid(textID.getText());
+						product.setpName(textName.getText());
+						product.setpCountry(textCountry.getText());
+						product.setType(textType.getText());
+						product.setSupplier_id(textSupp.getText());
+						product.setpPP(Integer.parseInt(textBuy.getText()));
+						product.setpSP(Integer.parseInt(textSell.getText()));
+						product.setpRP(Integer.parseInt(textRent.getText()));
+						product.setpMinStock(textMinStock.getText());
+						ctrProduct.insertNew(product);
+				}
+				else 
+				{
+					lblError.setText("Please insert product ID");
+				}
+				
+			}
+			
+			
+		});
 		panel_1.add(btnAdd);
 		
-		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(10, 208, 89, 23);
+		btnUpdate = new JButton("Update");
+		btnUpdate.setBounds(109, 243, 89, 23);
+		btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if (textID.getText().length()>0 && 
+						textName.getText().length()>0 && 
+						textCountry.getText().length()>0 && 
+						textType.getText().length()>0 && 
+						textSupp.getText().length()>0 && 
+						textBuy.getText().length()>0 && 
+						textSell.getText().length()>0 && 
+						textRent.getText().length()>0 && 
+						textMinStock.getText().length()>0)
+				{
+					ctrProduct.updateProduct(textID.getText(),
+							textName.getText(), 
+							Integer.parseInt(textBuy.getText()), 
+							Integer.parseInt(textSell.getText()), 
+							Integer.parseInt(textRent.getText()), 
+							textCountry.getText(), 
+							textMinStock.getText(), 
+							textSupp.getText(), 
+							textType.getText());	
+					
+				}
+				else 
+				{
+					lblError.setText("Please insert product ID");
+				}
+				
+			}
+			
+			
+		});
 		panel_1.add(btnUpdate);
 		
-		JButton btnRemove = new JButton("Remove");
-		btnRemove.setBounds(109, 208, 89, 23);
+		btnRemove = new JButton("Remove");
+		btnRemove.setBounds(205, 243, 89, 23);
+		btnRemove.addActionListener(new java.awt.event.ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if (textID.getText().length()>0)
+				{
+					ctrProduct.delete(textID.getText());	
+					
+				}
+				else 
+				{
+					lblError.setText("Please insert product ID");
+				}
+				
+			}
+			
+			
+		});
 		panel_1.add(btnRemove);
+		
+		JLabel lblBuy = new JLabel("Buy");
+		lblBuy.setBounds(156, 25, 53, 14);
+		panel_1.add(lblBuy);
+		
+		JLabel lblSell = new JLabel("Sell");
+		lblSell.setBounds(156, 53, 53, 14);
+		panel_1.add(lblSell);
+		
+		JLabel lblRent = new JLabel("Rent");
+		lblRent.setBounds(156, 82, 53, 14);
+		panel_1.add(lblRent);
+		
+		textBuy = new JTextField();
+		textBuy.setColumns(10);
+		textBuy.setBounds(208, 22, 86, 20);
+		panel_1.add(textBuy);
+		
+		textSell = new JTextField();
+		textSell.setColumns(10);
+		textSell.setBounds(208, 50, 86, 20);
+		panel_1.add(textSell);
+		
+		textRent = new JTextField();
+		textRent.setColumns(10);
+		textRent.setBounds(208, 79, 86, 20);
+		panel_1.add(textRent);
+		
+		JLabel lblMinStock = new JLabel("Min Stock");
+		lblMinStock.setBounds(156, 110, 53, 14);
+		panel_1.add(lblMinStock);
+		
+		textMinStock = new JTextField();
+		textMinStock.setColumns(10);
+		textMinStock.setBounds(208, 107, 86, 20);
+		panel_1.add(textMinStock);
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(10, 299, 89, 23);
@@ -187,7 +314,7 @@ public class MoreOptionsGUI extends JFrame {
 		panel_2.setToolTipText("");
 		panel_2.setName("");
 		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Supplier", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_2.setBounds(242, 11, 232, 262);
+		panel_2.setBounds(324, 11, 232, 262);
 		panel.add(panel_2);
 		
 		lblName_1 = new JLabel("Name");

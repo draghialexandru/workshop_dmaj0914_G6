@@ -59,7 +59,7 @@ public class DBProduct implements IFDBProd{
                         	Prod.getpCountry() + "','" + 
                         		Prod.getpMinStock() + "','" + 
                         			Prod.getSupplier_id() + "','" + 
-                        				Prod.getType();
+                        				Prod.getType() + "')";
 
        try{ // insert new Product
           con.setAutoCommit(false);
@@ -96,11 +96,11 @@ public class DBProduct implements IFDBProd{
 		 	  "pName ='"+ ProdObj.getpName()+"', "+
 		 	  "purchaseP ='"+ ProdObj.getpPP() + "', " +
                           "sellP ='"+ ProdObj.getpSP() + "', " +
-                          "rentP ='"+ ProdObj.getpRP() + "' " +
+                          "rentP ='"+ ProdObj.getpRP() + "', " +
                           "pCountry='"+ ProdObj.getpCountry() + "', "+
-                          "pMinStock ='" + ProdObj.getpMinStock() + "','" +
-                          "supplier_id = '" + ProdObj.getSupplier_id()  + "','" + 
-                          "type = '" + ProdObj.getType() + "','" + 
+                          "pMinStock ='" + ProdObj.getpMinStock() + "'," +
+                          "supplier_id = '" + ProdObj.getSupplier_id()  + "'," + 
+                          "type = '" + ProdObj.getType() + "' " + 
 		          " WHERE pid = '"+ ProdObj.getpid() + "'";
                 System.out.println("Update query:" + query);
   		try{ // update Product
