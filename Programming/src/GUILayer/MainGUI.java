@@ -1,5 +1,8 @@
 package GUILayer;
 
+import ControlLayer.CtrProduct;
+import ModelLayer.Product;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -80,25 +83,30 @@ public class MainGUI extends JFrame{
 				// TODO Auto-generated method stub
 				try
 				{
-					int searchID = Integer.parseInt(textSearch.getText());
-					int amount = Integer.parseInt(textAmount.getText());
-					//control.returnProductByID(searchID, amount);
+					CtrProduct product = new CtrProduct();
+					Product good = product.findByID(textSearch.getText());
+					String x = good.getpid().substring(0, 3).intern();
+					String y = textSearch.getText().substring(0, 3).intern();
+					//System.out.println(x+y);
+					if(x == y)
+					{
+						try
+						{
+							int amount = Integer.parseInt(textAmount.getText());
+							LabelPush(good, amount);
+						}
+						catch (Exception e)
+						{
+							label_4.setText("Bad amount input");
+						}
+					}
+				}
+				catch (Exception evt)
+					{
+						label_4.setText("Search by id");
+					}
 					
 				}
-				catch(Exception e)
-				{
-					String searchName = textSearch.getText();
-					try
-					{
-						int amount = Integer.parseInt(textAmount.getText());
-						//control.returnProductByName(searchName, amount);
-					}
-					catch(Exception evt)
-					{
-						System.out.println("bad amount input");
-					}
-				}
-			}
 		});
 		panel.add(btnAdd);
 		
@@ -106,11 +114,11 @@ public class MainGUI extends JFrame{
 		btnRemove.setBounds(286, 228, 89, 23);
 		btnRemove.addActionListener(new java.awt.event.ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				try
 				{
+					LabelPushReverse();
 					int searchID = Integer.parseInt(textSearch.getText());
 					int amount = Integer.parseInt(textAmount.getText());
 					//control.removeProductByID(searchID, amount);
@@ -161,7 +169,25 @@ public class MainGUI extends JFrame{
 		});
 		panel.add(btnCheckout);
 	}
+	private void LabelPushReverse()
+	{
+		label.setText(label_1.getText());
+		label_1.setText(label_2.getText());
+		label_2.setText(label_3.getText());
+		label_3.setText("");
+	}
 	
+	private void LabelPush(Product product, int amount) {
+		//label_4.setText(label_3.getText());
+		label_3.setText(label_2.getText());
+		label_2.setText(label_1.getText());
+		label_1.setText(label.getText());
+		label.setText(product.getpid() + " # " +
+						amount + " # " + 
+						product.getpName() + " # " + 
+						product.getpSP() + " # " +
+						product.getpCountry());
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
